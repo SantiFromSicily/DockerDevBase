@@ -1,0 +1,42 @@
+echo "======================="
+echo "   COMANDI DockerDevKit"
+echo "======================="
+echo ""
+
+echo "- Visualizzare container in esecuzione"
+echo "  da qualsiasi directory:"
+echo "   docker ps"
+echo ""
+
+echo "- Avviare un container"
+echo "  da directory Docker_NOME_CONTAINER:"
+echo "   ./start-NOME_CONTAINER.sh"
+echo "   (esempio: ./start-php.sh    ./start-php-mysql.sh)"
+echo ""
+
+echo "- Fermare un container"
+echo "  da directory Docker_NOME_CONTAINER:"
+echo "   ./stop-NOME_CONTAINER.sh"
+echo "   (esempio: ./stop-php.sh    ./stop-php-mysql.sh)"
+echo ""
+
+echo "- Spegnere e rimuovere container, network, volumi orfani"
+echo "  da directory Docker_NOME_CONTAINER/container-compose:"
+echo "   ./destroy-NOME_CONTAINER.sh"
+echo "   (esempio: ./destroy-php.sh    ./destroy-php-mysql.sh)"
+echo ""
+
+echo "- Pulizia completa: rimuove container, volumi, orfani e immagini"
+echo "  da directory Docker_NOME_CONTAINER/container-compose:"
+echo "   ./destroy-full-NOME_CONTAINER.sh"
+echo "   (esempio: ./destroy-full-php.sh    ./destroy-full-php-mysql.sh)"
+echo ""
+
+echo "Nota:"
+echo " - Sostituisci NOME_CONTAINER con il nome della directory del container interessato."
+echo " - Se la directory DockerDevBase è vuota, copia o sposta al suo interno la cartella del container."
+echo " - Solo dopo aver inserito le directory dei container potrai usare i comandi di avvio, stop, destroy..."
+echo " - I comandi devono essere eseguiti dalle directory indicate (container o container-compose)."
+echo ""
+
+echo "======================="

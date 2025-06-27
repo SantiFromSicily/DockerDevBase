@@ -1,0 +1,145 @@
+:root {
+  --bg-color: #cceeff; /* sfondo principale azzurro chiaro */
+  --text-color: #002244; /* testo scuro per contrasto */
+  --accent-color: #0055aa; /* blu medio, accento armonioso */
+
+  --button-bg-color: #0077cc; /* blu vivo ma leggibile */
+  --button-text-color: #ffffff; /* testo bianco sui bottoni */
+
+  --link-color: #004488; /* blu più scuro per i link */
+  --link-hover-color: #002244; /* ancora più scuro al passaggio */
+  --link-hover-bg-color: #aaddff; /* azzurro più chiaro come evidenziazione */
+
+  --hover-color: #002244;
+  --hover-bg-color: #aaddff;
+
+  --menu-bg-color: #bbddff; /* sfondo del menu più chiaro dell'azzurro base */
+  --menu-section-bg: #aaccff; /* leggermente più scuro */
+  --menu-text-color: #003355; /* testo leggibile */
+  --menu-border-color: #0055aa;
+
+  --menu-hover-color: #002244;
+  --menu-hover-bg-color: #99ccff;
+  --menu-hover-section-bg: #88bbff;
+
+  /* Variabili derivate coerenti */
+  --menu-link-color: var(--link-color);
+  --menu-link-hover-color: var(--link-hover-color);
+  --menu-link-hover-bg-color: var(--link-hover-bg-color);
+
+  --menu-button-bg-color: var(--button-bg-color);
+  --menu-button-text-color: var(--button-text-color);
+
+  --menu-accent-color: var(--accent-color);
+}
+
+
+/* Impostazioni generali */
+html, body {
+  overflow: hidden !important;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem); /* dimensione fluida */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease; /* aggiunto */
+}
+
+/* Indicazione tema attivo */
+body::after {
+  content: attr(data-theme);
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 0.9rem;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.8;
+  z-index: 10000;
+}
+
+/* Contenitore principale */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Contenuto principale */
+.main-content {
+  margin-top: 70px;
+  margin-bottom: 120px;
+  padding: 1rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* ≤600px */
+@media (max-width: 600px) {
+  .site-header {
+    height: 50px;
+    padding: 0 0.75rem;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+
+  .icon-btn {
+    font-size: 1.2rem;
+  }
+}
+
+/* ≤768px */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 0 1rem;
+  }
+}
+
+/* ≤992px */
+@media (max-width: 992px) {
+  .site-header {
+    padding: 0 1.25rem;
+  }
+}
+
+/* ≤1200px */
+@media (max-width: 1200px) {
+  .site-header {
+    padding: 0 1.5rem;
+  }
+}
+
+/* ≥1600px */
+@media (min-width: 1600px) {
+  .site-header {
+    padding: 0 2rem;
+  }
+}
+
+/* ≥2000px */
+@media (min-width: 2000px) {
+  .site-header {
+    padding: 0 2.5rem;
+  }
+}

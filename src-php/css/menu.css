@@ -1,0 +1,195 @@
+/* RESET BASE */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--menu-link-color);
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--menu-link-hover-color);
+  background-color: var(--menu-link-hover-bg-color);
+  text-decoration: none;
+}
+
+/* OVERLAY MENU */
+.overlay-menu {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  max-height: calc(100vh - 60px - 40px);
+  background: var(--menu-bg-color);
+  display: none;
+  flex-direction: column;
+  padding: 3rem 2rem 2rem;
+  z-index: 9999;
+  overflow-y: auto;
+  color: var(--menu-text-color);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  border-top: 1px solid var(--menu-border-color);
+  border-bottom: 1px solid var(--menu-border-color);
+}
+
+.overlay-menu.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* SCROLLBAR */
+.overlay-menu::-webkit-scrollbar {
+  width: 8px;
+}
+.overlay-menu::-webkit-scrollbar-thumb {
+  background-color: var(--menu-accent-color);
+  border-radius: 4px;
+}
+
+/* LINK */
+.overlay-menu a {
+  color: var(--menu-text-color);
+  background: transparent;
+  display: block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+}
+
+.overlay-menu a:hover,
+.overlay-menu a:focus {
+  color: var(--menu-hover-color);
+  background-color: var(--menu-hover-bg-color);
+  text-decoration: none;
+}
+
+/* BOTTONI */
+.overlay-menu button,
+.my-sections button,
+.classic-sections button {
+  all: unset;
+  color: var(--menu-link-color);
+  cursor: pointer;
+  padding: 0.35rem 0.75rem;
+  font: inherit;
+  text-align: left;
+  border-radius: 4px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  display: inline-block;
+  line-height: 1.5;
+  vertical-align: middle;
+  width: auto;
+}
+
+.overlay-menu button:hover,
+.overlay-menu button:focus,
+.my-sections button:hover,
+.my-sections button:focus,
+.classic-sections button:hover,
+.classic-sections button:focus {
+  color: var(--menu-link-hover-color);
+  background-color: var(--menu-link-hover-bg-color);
+  outline: none;
+  text-decoration: none;
+}
+
+/* CONTENUTO */
+.overlay-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+/* SEZIONI */
+.my-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  flex: 1 1 60%;
+  min-width: 300px;
+  text-align: left;
+}
+
+.my-sections .section {
+  flex: 1 1 150px;
+  background: var(--menu-section-bg);
+  color: var(--menu-text-color);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--menu-border-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.my-sections .section:hover,
+.my-sections .section:focus-within {
+  background-color: var(--menu-hover-section-bg);
+  color: var(--menu-hover-color);
+}
+
+.classic-sections {
+  flex: 1 1 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 250px;
+}
+
+.classic-sections .classic-section {
+  background: var(--menu-section-bg);
+  color: var(--menu-text-color);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--menu-border-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.classic-sections .classic-section:hover,
+.classic-sections .classic-section:focus-within {
+  background-color: var(--menu-hover-section-bg);
+  color: var(--menu-hover-color);
+}
+
+/* LISTE */
+.my-sections ul,
+.my-sections ul ul,
+.classic-sections ul,
+.classic-sections ul ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* RESPONSIVE SWITCH */
+.my-sections {
+  display: none;
+}
+
+.classic-sections {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .my-sections {
+    display: flex;
+  }
+
+  .classic-sections {
+    display: none;
+  }
+}

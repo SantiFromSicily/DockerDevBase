@@ -1,0 +1,72 @@
+#!/bin/bash
+# =======================================================
+# VERSIONE 1 - BASE
+    # ENV:
+        # NOME CONTAINER ddk-php
+        # NOME PROGETTO container-compose-ddk
+        # DOCKER_NET0=Docker_NET0
+        # PERCORSI VOLUME sono relativi e predefiniti 
+    # COMPOSE:
+        # - Una sola rete usata: Docker_NET0
+        # - Montaggio volume singolo, semplice e diretto
+    # start-php.sh:
+        # - Pulizia container e volumi esistenti
+        # - Creazione rete Docker se mancante
+        # - Avvio container Docker
+        # - vessun controllo avanzato path, directory ecc..
+#
+# VERSIONE 2 - GIA TESTATA (non inclusa in questo file)
+    # ENV:
+    # COMPOSE:
+        # - Previsto un config.env nella dir container (per path assoluto e/o altro)
+    # start-php.sh:
+        # - Controlli su directory obbligatorie
+        # - Verifica esistenza directory preconfigurate (best pratice) in container
+        # - Creazione directory mancanti (su conferma si/no ma vuote)
+        # - PATH da config.env (se esistente)
+        # - Validazione path automatico
+        # - PATH da config.env (se esistente)
+#
+# VERSIONE 3 - GIA TESTATA (non inclusa in questo file)
+    # ENV:
+        # V3: nome container configurabile da variabile in .env di ogni container
+        # V3: nome progetto configurabile da variabile in .env di ogni container
+        # V3: previste più reti
+        # V3: previsti dir multipli e path montabili in .env di ogni container
+
+    # COMPOSE:
+        # - Nome container configurabile da variabile in .env del container
+        # - Previsto un config.env alla base del progetto (per path assoluto e/o altro)
+        # - Previsti più volumi (più cartelle da montare)
+        # - Previste più reti
+    # start-php.sh:
+        # - Controlli su directory obbligatorie
+        # - Verifica esistenza directory preconfigurate (best pratice) in container
+        # - Creazione directory mancanti (su conferma si/no ma vuote)
+        # - PATH da config.env (se esistente)
+        # - Validazione path automatico
+        # - PATH da config.env (se esistente)
+# =======================================================
+
+services:
+  php:
+    container_name: ddk-php
+    # V3: nome container configurabile da variabile in .env del container
+    image: "php:${PHP_VERSION}-apache"
+    ports:
+      - "${PHP_PORT}:80"
+    volumes:
+      - ../../../:/var/www/html
+      # V3: previsti più volumi (più cartelle da montare)
+    networks:
+      - Docker_NET0
+      # V3: previste più reti
+    env_file:
+      - ../.env-php
+      # V2: previsto un config.env (per il path assoluto eo altro) nella dir container
+      # V3: previsto un config.env (per il path assoluto eo altro) alla base del progetto
+
+networks:
+  Docker_NET0:
+    external: true
+    # V3: previste più reti
